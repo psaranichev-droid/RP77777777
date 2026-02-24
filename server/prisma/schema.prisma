@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Категории товаров
+model Category {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  slug          String   @unique
+  description   String?
+  image         String?
+
+  // SEO поля
+  seoTitle      String?
+  seoDescription String?
+  seoKeywords   String?
+
+  // Связи
+  subcategories SubCategory[]
+  products      Product[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Подкатегории товаров
+model SubCategory {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String
+  categoryId    String
+  category      Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  // SEO поля
+  seoTitle      String?
+  seoDescription String?
+  seoKeywords   String?
+  description   String?
+
+  // Связи
+  products      Product[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([categoryId, slug])
+}
+
+// Основная таблица товаров
+model Product {
+  id            String   @id
+  externalId    String   @unique
+
+  // Основные данные
+  name          String
+  description   String?
+  price         Float
+  oldPrice      Float?
+  vendor        String?
+  inStock       Boolean  @default(true)
+
+  // Категоризация
+  categoryId    String
+  category      Category @relation(fields: [categoryId], references: [id])
+
+  subcategoryId String?
+  subcategory   SubCategory? @relation(fields: [subcategoryId], references: [id])
+
+  // Изображения
+  mainImage     String?
+  images        Image[]
+
+  // ЧПУ для URL
+  slug          String
+
+  // SEO поля
+  seoTitle      String?
+  seoDescription String?
+  seoKeywords   String?
+
+  // Дополнительные данные
+  rating        Float?
+  reviewCount   Int      @default(0)
+  views         Int      @default(0)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([categoryId, slug])
+}
+
+// Таблица изображений товаров
+model Image {
+  id            String   @id @default(cuid())
+  url           String
+  alt           String?
+  order         Int      @default(0)
+
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// Логи импорта
+model ImportLog {
+  id            String   @id @default(cuid())
+  status        String
+  message       String?
+  totalProducts Int      @default(0)
+  importedProducts Int   @default(0)
+  failedProducts Int     @default(0)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

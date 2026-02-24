@@ -1,0 +1,58 @@
+/* Rubik - Display at 100ms, then swap */
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik-cyrillic-400.woff2') format('woff2'),
+       url('/fonts/rubik-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  size-adjust: 103%;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik-cyrillic-500.woff2') format('woff2'),
+       url('/fonts/rubik-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+  size-adjust: 103%;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik-cyrillic-700.woff2') format('woff2'),
+       url('/fonts/rubik-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+  size-adjust: 103%;
+}
+
+/* Inter - Display immediately */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-cyrillic-400.woff2') format('woff2'),
+       url('/fonts/inter-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-cyrillic-500.woff2') format('woff2'),
+       url('/fonts/inter-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-cyrillic-600.woff2') format('woff2'),
+       url('/fonts/inter-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}

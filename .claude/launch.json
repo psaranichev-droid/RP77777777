@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Frontend (React + Vite)",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npm run dev"],
+      "cwd": "D:\\22",
+      "port": 3004
+    },
+    {
+      "name": "Backend API (Express)",
+      "runtimeExecutable": "D:\\22\\server\\start-backend.bat",
+      "runtimeArgs": [],
+      "cwd": "D:\\22\\server",
+      "port": 3001
+    }
+  ]
+}
