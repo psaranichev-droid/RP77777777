@@ -54,8 +54,9 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       strictPort: true,
       hmr: {
-        host: 'localhost',
+        host: '127.0.0.1',
         port: 3000,
+        protocol: 'ws',
       },
       // Proxy для API запросов в dev
       proxy: {
